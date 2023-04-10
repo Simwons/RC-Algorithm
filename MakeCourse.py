@@ -36,7 +36,7 @@ def save_course_data(course_data):
         return
     
     #저장 경로 및 파일 이름 지정
-    save_path = 'C:/RaceProject/CourseData'
+    save_path = 'C:\RaceProject\RC-Algorithm\CourseData'
     course_data_files = os.listdir(save_path)
     if len(course_data_files) == 0:
         new_file_num = 1

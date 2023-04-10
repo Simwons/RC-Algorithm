@@ -65,16 +65,16 @@ def assign_course_to_map(map_data, course_data_list):
 def main():
     #맵데이터 가져오기
     map_data = []
-    with open('C:\\RaceProject\\MapData\\map_data.csv', 'r') as csvfile:
+    with open('C:\RaceProject\RC-Algorithm\MapData\map_data.csv', 'r') as csvfile:
         reader = csv.reader(csvfile)
         for row in reader:
             map_data.append([int(cell) for cell in row])
 
     #코스데이터 가져오기
     course_data_list = []
-    for file_name in os.listdir('C:\\RaceProject\\CourseData'):
+    for file_name in os.listdir('C:\RaceProject\RC-Algorithm\CourseData'):
         if file_name.endswith('.csv'):
-            with open(os.path.join('C:\\RaceProject\\CourseData', file_name), 'r') as csvfile:
+            with open(os.path.join('C:\RaceProject\RC-Algorithm\CourseData', file_name), 'r') as csvfile:
                 course_data = list(csv.reader(csvfile))
                 course_data = list(map(tuple, [map(int, row) for row in course_data]))
                 course_data_list.append((file_name, course_data))

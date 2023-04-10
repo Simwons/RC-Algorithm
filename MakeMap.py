@@ -15,7 +15,7 @@ map_data = [
 ]
 
 # CSV 파일로 저장
-with open('C:\\RaceProject\\MapData\\map_data.csv', 'w', newline='') as csvfile:
+with open('C:\RaceProject\RC-Algorithm\MapData\map_data.csv', 'w', newline='') as csvfile:
     writer = csv.writer(csvfile)
     for row in map_data:
         writer.writerow(row)
