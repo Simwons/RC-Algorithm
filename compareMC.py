@@ -3,10 +3,12 @@ import csv
 
 def resize_map(map, new_n, new_m):
     n, m = len(map), len(map[0])
+    #new_map에 추가할 값 위치 저장
     x_val = [int(i*n/new_n) for i in range(new_n)]
     y_val = [int(j*m/new_m) for j in range(new_m)]
     
     new_map = [[0] * new_m for _ in range(new_n)]
+    
     for i in range(new_n):
         for j in range(new_m):
             new_map[i][j] = map[x_val[i]][y_val[j]]
