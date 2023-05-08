@@ -90,17 +90,17 @@ def check_walls(map, current_pos, next_pos):
     return False #장애물이 없다면 반복
 
 def assign_course(map_data, course_data_list):
-    # 적합한 코스 저장할 리스트 생성
+    #적합한 코스 저장할 리스트 생성
     matched_courses = []
 
-    # 코스 데이터와 맵 데이터 비교
+    #코스 데이터와 맵 데이터 비교
     for course_data in course_data_list:
         course = course_data[1]
         is_matched = check_course(map_data, course)
         if is_matched:
             matched_courses.append(course_data)
 
-    # 적합한 코스 중 랜덤으로 선택
+    #적합한 코스 중 랜덤으로 선택
     if matched_courses:
         matched_course_data = random.choice(matched_courses)
         return matched_course_data
