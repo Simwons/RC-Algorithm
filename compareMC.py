@@ -3,15 +3,15 @@ import random
 import numpy as np
 import csv
 
-def resize_course(course, new_n, new_m):
+def resize_course(course, map_n, map_m):
     #코스 데이터 크기를 맵 데이터와 동일하게 변경
     n, m = len(course), len(course[0])
-    x_val = np.linspace(0, n-1, new_n, dtype=int)
-    y_val = np.linspace(0, m-1, new_m, dtype=int)
+    x_val = np.linspace(0, n-1, map_n, dtype=int)
+    y_val = np.linspace(0, m-1, map_m, dtype=int)
 
-    new_course = np.zeros((new_n, new_m))
-    for i in range(new_n):
-        for j in range(new_m):
+    new_course = np.zeros((map_n, map_m))
+    for i in range(map_n):
+        for j in range(map_m):
             new_course[i][j] = course[x_val[i]][y_val[j]]
             
     for row in range(len(new_course)):
