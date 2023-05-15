@@ -29,7 +29,7 @@ def save_course_data(course_data):
     
     #중복된 숫자가 있으면 경고 메시지 출력
     if duplicates:
-        print('Duplicate numbers found at:')
+        print('코스데이터에 중복된 값이 있습니다.')
         for number, position in duplicates:
             print('숫자 {}가 다음의 위치에 중복됩니다. {}'.format(number, position))
         print('코스데이터가 저장되지 않았습니다.')
