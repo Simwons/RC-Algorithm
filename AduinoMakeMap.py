@@ -1,9 +1,15 @@
 import csv
+import serial
 
 map_width = 100
 map_height = 100
 
-def_front = 180
+dft_front = 180
+
+PORT = 'COM4'
+BaudRate = 9600
+
+ser = serial.Serial(PORT, BaudRate)
 
 #데이터 1만 존재하는 기본맵 생성
 map_data = [['1'] * map_width for _ in range(map_height)]
@@ -30,27 +36,32 @@ def remove_columns():
     transposed_map = [col for col in transposed_map if '0' in col]
     map_data = list(map(list, zip(*transposed_map)))
 
+#차량 회전
+def turn_car():
+    global dft_front
+    if ser.in_waiting > 0:
+        data = ser.readline().decode().rstrip()
+        
+        if data == '01': #우회전
+            if dft_front == 0:
+                dft_front = 360
+            dft_front = dft_front - 90
+        elif data == '02': #좌회전
+            if dft_front == 360:
+                dft_front = 0
+            dft_front = dft_front + 90
+        elif data == '00': #전진
+            dft_front = dft_front
+            
 #차량 이동
 def move_car():    
-    global def_front
     car_front = None
-    
-    turn_R = False
-    turn_L = False
     
     map_data[car_pos[1]][car_pos[0]] = '0'
     
     #차량 방향 변경
-    if turn_R:
-        if def_front == 0:
-            def_front = 360
-        car_front = def_front - 90        
-        def_front = car_front
-    if turn_L:
-        if def_front == 360:
-            def_front = 0
-        car_front = def_front + 90
-        def_front = car_front
+    turn_car()
+    car_front = dft_front
     
     #차량 방향에 따른 이동
     if car_front == 180:
