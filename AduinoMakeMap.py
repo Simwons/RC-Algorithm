@@ -38,7 +38,7 @@ def remove_columns():
 
 #차량 회전
 def turn_car():
-    global dft_front
+    global dft_front, ser
     if ser.in_waiting > 0:
         data = ser.readline().decode().rstrip()
         
@@ -54,8 +54,10 @@ def turn_car():
             dft_front = dft_front
             
 #차량 이동
-def move_car():    
+def move_car():
     car_front = None
+    new_x = None
+    new_y = None
     
     map_data[car_pos[1]][car_pos[0]] = '0'
     
