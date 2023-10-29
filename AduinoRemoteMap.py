@@ -4,7 +4,7 @@ import serial
 map_width = 100
 map_height = 100
 
-PORT = 'COM4'
+PORT = 'COM5'
 BaudRate = 9600
 
 ser = serial.Serial(PORT, BaudRate)
