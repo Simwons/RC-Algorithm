@@ -1,8 +1,6 @@
 import csv
+import sys
 import serial
-
-map_width = 100
-map_height = 100
 
 PORT = 'COM5'
 BaudRate = 9600
@@ -12,6 +10,9 @@ ser = serial.Serial(PORT, BaudRate)
 
 while True:
     command = input('차량 동작 (wasd or k): ')
+    if (command == "k"):
+        print("동작 종료")
+        exit()
     ser.write(command.encode())
     
     
